@@ -1,19 +1,14 @@
 <script lang="ts">
-    import {basicSetup, EditorView} from 'codemirror';
-    import {getCM, vim} from "@replit/codemirror-vim"
+    import { basicSetup, EditorView} from 'codemirror';
+    import { vim } from "@replit/codemirror-vim"
+    import { vimtutor} from "$lib/vimtutor"
     import { onMount } from 'svelte';
     let dom: HTMLElement; 
     let view: EditorView;
-    let value = `
-    toDateString();
-    testint 
-        hello world
-testing hello world testing
-    `
 
     onMount(() => { 
         view = new EditorView({
-            doc:value,
+            doc:vimtutor,
                 extensions: [
                     vim(),
                     basicSetup,
@@ -23,12 +18,6 @@ testing hello world testing
         console.log(vim())
     })
     
-$:{
-        if(view) {
-
-            console.log(view.state.doc.toString());
-        }
-    }
 </script>
 
 
